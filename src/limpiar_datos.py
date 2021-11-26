@@ -12,4 +12,8 @@ def read_data_compute_df(data_file):
 
 file_name = "2JbKmPs"
 cancer_data = read_data_compute_df(file_name)
-print(cancer_data.head())
+
+clean_cancer_data = cancer_data.drop(columns = 
+                                    ["DGUID", "UOM_ID","UOM", "SCALAR_ID","VECTOR","COORDINATE","STATUS",\
+                                    "TERMINATED","DECIMALS","SYMBOL"])
+print(clean_cancer_data.head())
