@@ -1,26 +1,32 @@
 import pandas as pd
 import zipfile
+from time import sleep
 
 def read_data_compute_df(data_file):
     # Read zipped file
+    print("Reading zipped file...")
     zf = zipfile.ZipFile(data_file)
     # Parse csv content without unzipping
     df = pd.read_csv(zf.open(str(13100111)+'.csv'),low_memory=False)
-    
+    sleep(2)
+    print("Done")
     return df
 
-
-file_name = "2JbKmPs"
-cancer_df = read_data_compute_df(file_name)
-
-clean_cancer_df = cancer_df.drop(columns = 
+def main():
+    file_name = "2JbKmPs"
+    cancer_df = read_data_compute_df(file_name)
+    print("Cleaning data...")
+    clean_cancer_df = cancer_df.drop(columns = 
                                     ["DGUID", "UOM_ID","UOM", "SCALAR_ID","VECTOR","COORDINATE","STATUS",\
                                     "TERMINATED","DECIMALS","SYMBOL"])
-#print(clean_cancer_df.info())
-#print(clean_cancer_df.describe())
-#print(clean_cancer_df.columns)
-#print(clean_cancer_df.isnull().values.any())
-#print(clean_cancer_df.isnull().sum().sum())
+    clean_cancer_df.rename(columns={'Age group':'Age_group'}, inplace=True)
+    sleep(3)
+    print("Done")
+    print("Creating new csv file to visualize the cleanup...")
+    clean_cancer_df.to_csv(file_name+"_clean.csv", index=False)
+    sleep(2)
+    print("Done")
 
-# Rename column
-clean_cancer_df.rename(columns={'Age group':'Age_group'}, inplace=True)
+
+if __name__ == "__main__":
+    main()
