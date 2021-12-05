@@ -10,3 +10,4 @@ xlrd==1.2.0
 jupyter
 ipywidgets==7.6.5
 urllib3==1.25.9
+dash==1.13.3
