@@ -1,0 +1,13 @@
+plotly==4.14.3
+pandas==1.2.4
+numpy==1.20.2
+numpydoc==1.1.0
+setuptools==49.2.0
+pytz==2021.1
+python-dateutil==2.8.1
+gunicorn
+xlrd==1.2.0
+jupyter
+ipywidgets==7.6.5
+urllib3==1.25.9
+dash==1.13.3
